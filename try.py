@@ -12,13 +12,13 @@ def diff_activation(activation_fnuction_name, previous, a_values):
     	a_value -- input
 
     """
-    # derivation of relu
+    # derivation of activation funcitons
     if activation_fnuction_name == "relu":
         a_values[a_values < 0 ] = 0
         a_values[a_values > 0 ] = 1
     elif activation_fnuction_name == "sigmoid":
         a_values = np.exp(a_values)
-        a_values = a_values/((1 + a_values)**2)
+        a_values = a_values/(1 - a_values)
     # chain rule (derivation of loss function * derivation of relu)
     return previous * a_values
 
